@@ -1,0 +1,112 @@
+package com.example.tictactoe;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+    
+    MenegerGry mg = new MenegerGry();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        TextView k = findViewById(R.id.Kolejka);
+        k.setText("Kolej gracza z symbolem: " + mg.czyja_kolej());
+
+
+    }
+
+    public void wcisnij_przycisk(View view)
+    {
+        TextView znak;
+        switch(view.getId())
+        {
+            case R.id.b11:
+                if(mg.postaw_znak(0, 0, mg.czyja_kolej()) && mg.sprawdz_czy_koniec()==false)
+                {
+                    znak=findViewById(R.id.b11);
+                    znak.setText(mg.czytaj_pole(0,0));
+                    mg.zmien_gracza();
+                }
+                break;
+           /* case R.id.b12:
+                if(mg.postaw_znak(0,1,mg.czyja_kolej())==true && mg.sprawdz_czy_koniec()==false)
+                {
+                    znak=findViewById(R.id.b12);
+                    znak.setText(mg.czytaj_pole(0,1));
+                    mg.zmien_gracza();
+                }
+                break;
+            case R.id.b13:
+                if(mg.postaw_znak(0,2,mg.czyja_kolej())==true && mg.sprawdz_czy_koniec()==false)
+                {
+                    znak=findViewById(R.id.b13);
+                    znak.setText(mg.czytaj_pole(0,2));
+                    mg.zmien_gracza();
+                }
+                break;
+            case R.id.b21:
+                if(mg.postaw_znak(1,0,mg.czyja_kolej())==true && mg.sprawdz_czy_koniec()==false)
+                {
+                    znak=findViewById(R.id.b21);
+                    znak.setText(mg.czytaj_pole(1,0));
+                    mg.zmien_gracza();
+                }
+                break;
+            case R.id.b22:
+                if(mg.postaw_znak(1,1,mg.czyja_kolej())==true && mg.sprawdz_czy_koniec()==false)
+                {
+                    znak=findViewById(R.id.b22);
+                    znak.setText(mg.czytaj_pole(1,1));
+                    mg.zmien_gracza();
+                }
+                break;
+            case R.id.b23:
+                if(mg.postaw_znak(1,2,mg.czyja_kolej())==true && mg.sprawdz_czy_koniec()==false)
+                {
+                    znak=findViewById(R.id.b23);
+                    znak.setText(mg.czytaj_pole(1,2));
+                    mg.zmien_gracza();
+                }
+                break;
+            case R.id.b31:
+                if(mg.postaw_znak(2,0,mg.czyja_kolej())==true && mg.sprawdz_czy_koniec()==false)
+                {
+                    znak=findViewById(R.id.b31);
+                    znak.setText(mg.czytaj_pole(2,0));
+                    mg.zmien_gracza();
+                }
+                break;
+            case R.id.b32:
+                if(mg.postaw_znak(2,1,mg.czyja_kolej())==true && mg.sprawdz_czy_koniec()==false)
+                {
+                    znak=findViewById(R.id.b32);
+                    znak.setText(mg.czytaj_pole(2,1));
+                    mg.zmien_gracza();
+                }
+                break;
+            case R.id.b33:
+                if(mg.postaw_znak(2,2,mg.czyja_kolej())==true && mg.sprawdz_czy_koniec()==false)
+                {
+                    znak=findViewById(R.id.b33);
+                    znak.setText(mg.czytaj_pole(2,2));
+                    mg.zmien_gracza();
+                }
+                break;*/
+        }
+
+        /*if(mg.sprawdz_czy_koniec() == true)
+        {
+            TextView k = findViewById(R.id.Kolejka);
+            k.setText("Wygrywa "+ mg.podaj_zwyciezce() + "!");
+        }*/
+    }
+}
+
+
