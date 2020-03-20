@@ -1,0 +1,29 @@
+package com.example.tictactoe;
+
+public class Pole
+{
+    private String znak;
+    private Boolean czy_mozna_postawic;
+
+    public Pole()
+    {
+        znak="";
+        czy_mozna_postawic=true;
+    }
+
+    public Boolean postaw(String s)
+    {
+        if(czy_mozna_postawic==true)
+        {
+            znak = s;
+            czy_mozna_postawic=false;
+            return true;
+        }
+        return false;
+    }
+
+    public String odczytaj_pole()
+    {
+        return znak;
+    }
+}
