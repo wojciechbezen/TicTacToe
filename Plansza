@@ -1,0 +1,33 @@
+package com.example.tictactoe;
+
+public class Plansza {
+
+    private Pole[][] pole_plansza  = new Pole[3][3];
+    private int licznik_ruchow;
+
+    public Plansza()
+    {
+
+        licznik_ruchow=0;
+    }
+
+    public boolean postaw(int x, int y, String s)
+    {
+        if(pole_plansza[x][y].postaw(s) == true)
+        {
+            licznik_ruchow++;
+            return true;
+        }
+        return false;
+    }
+
+    public String odczytaj_pole(int x, int y)
+    {
+        return pole_plansza[x][y].odczytaj_pole();
+    }
+
+    public int zwroc_licznik_ruchow()
+    {
+        return licznik_ruchow;
+    }
+}
