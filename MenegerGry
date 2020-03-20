@@ -1,0 +1,103 @@
+package com.example.tictactoe;
+import java.util.Random;
+public class MenegerGry
+{
+    private Plansza p = new Plansza();
+    private String gracz;
+    private Boolean czy_koniec;
+    private String zwyciezca;
+
+    public MenegerGry()
+    {
+        if(Math.random()>0.50)
+        {
+            gracz="X";
+        }
+        else
+        {
+            gracz="O";
+        }
+        czy_koniec=false;
+        zwyciezca="";
+    }
+
+    public String czyja_kolej()
+    {
+        return gracz;
+    }
+
+    public void zmien_gracza()
+    {
+        if(gracz=="X")
+        {
+            gracz="O";
+        }
+        else
+        {
+            gracz="X";
+        }
+    }
+
+    public Boolean sprawdz_czy_koniec()
+    {
+        if(p.zwroc_licznik_ruchow()>4)
+        {
+            if((sprawdz_pion(0)==true) ||(sprawdz_pion(1) == true) || (sprawdz_pion(2) == true) || (sprawdz_poziom(0)==true) || (sprawdz_poziom(1)==true) || (sprawdz_poziom(2)==true) || (sprawdz_skosy()==true))
+            {
+                czy_koniec = true;
+            }
+            return czy_koniec;
+        }
+        return czy_koniec;
+    }
+
+    public Boolean postaw_znak(int x, int y, String gracz)
+    {
+        return p.postaw(x,y,gracz);
+    }
+
+    public String podaj_zwyciezce()
+    {
+        return zwyciezca;
+    }
+
+    public Boolean sprawdz_pion(int x)
+    {
+        if((p.odczytaj_pole(x,0)==p.odczytaj_pole(x,1)) && p.odczytaj_pole(x,0)==p.odczytaj_pole(x,2))
+        {
+            zwyciezca=p.odczytaj_pole(x,0);
+            return true; // jesli sie okaze ze ktos wygral
+        }
+        return false;
+    }
+
+    public Boolean sprawdz_poziom(int y)
+    {
+        if((p.odczytaj_pole(0,y)==p.odczytaj_pole(1,y)) && p.odczytaj_pole(0,y)==p.odczytaj_pole(2,y))
+        {
+            zwyciezca=p.odczytaj_pole(0,y);
+            return true; // jesli sie okaze ze ktos wygral
+        }
+        return false;
+    }
+
+    public Boolean sprawdz_skosy()
+    {
+        if((p.odczytaj_pole(0,0)==p.odczytaj_pole(1,1)) && p.odczytaj_pole(0,0)==p.odczytaj_pole(2,2))
+        {
+            zwyciezca=p.odczytaj_pole(1,1);
+            return true; // jesli sie okaze ze ktos wygral
+        }
+        if((p.odczytaj_pole(0,2)==p.odczytaj_pole(1,1)) && p.odczytaj_pole(0,2)==p.odczytaj_pole(2,0))
+        {
+            zwyciezca=p.odczytaj_pole(1,1);
+            return true; // jesli sie okaze ze ktos wygral
+        }
+        return false;
+    }
+
+    public String czytaj_pole(int x, int y)
+    {
+        return p.odczytaj_pole(x,y);
+    }
+}
